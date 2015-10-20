@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var favicon = require('serve-favicon');
 var path = require('path');
 var compression = require('compression');
 
@@ -10,12 +9,10 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(compression());
 
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-    res.status(200);
     res.render('pages/index', {
         title: 'willkommen',
         description: 'There is no such thing as perfect',
