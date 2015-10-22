@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "node-js-getting-started",
   "version": "0.1.5",
   "description": "A sample Node.js app using Express 4",
@@ -27,4 +28,19 @@
     "express"
   ],
   "license": "MIT"
+=======
+  "private": true,
+  "dependencies": {
+    "angular": "^1.3.12",
+    "todomvc-common": "^1.0.0",
+    "todomvc-app-css": "^1.0.1",
+    "angular-route": "^1.3.12",
+    "express": "~3.4.7",
+    "body-parser": "~1.13.1",
+    "mongoose": "~4.0.6"
+  },
+  "engines": {
+    "node": ">=0.10.25"
+  }
+>>>>>>> origin/master
 }
