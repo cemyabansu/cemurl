@@ -53,11 +53,13 @@ app.get('/add', function (req, res) {
 });
 
 app.get('*', function (req, res) {
-	var request = req.originalUrl;
+    var request = req.originalUrl.slice(1);
 	
-	if(request.length === 7 ){
-		res.json(200, request);
-        	console.log('short url request');
+    if (request.length === 6) {
+        Url.findOne({ key: request }, function (err, returnedUrl) {
+            console.log("the found url is : " + returnedUrl.url);
+            res.redirect(returnedUrl.url);
+        });
 	}
 	else{
 		res.status(404);

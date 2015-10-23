@@ -5,7 +5,7 @@ function LetsMakeItShort () {
 
 	$.get( "/add", { newUrl: enteredUrl} )
 			.done(function( key ) {
-    			$('#outputUrl').text(key);
+    			$('#outputUrl').text(document.URL +key);
     			$('#outputDiv').show();
   		});
 }
