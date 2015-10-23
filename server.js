@@ -57,8 +57,17 @@ app.get('*', function (req, res) {
 	
     if (request.length === 6) {
         Url.findOne({ key: request }, function (err, returnedUrl) {
-            console.log("the found url is : " + returnedUrl.url);
-            res.redirect(returnedUrl.url);
+            if(err === null && returnedUrl !== null){
+                console.log("the found url is : " + returnedUrl.url);
+                res.redirect(returnedUrl.url);
+            }else{
+                res.status(404);
+                res.render('pages/error', {
+                    title: 'What are you looking for is not here.',
+                    description: 'error page',
+                    keywords: 'error, 404, lol'
+                });
+            }
         });
 	}
 	else{
