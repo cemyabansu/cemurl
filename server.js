@@ -55,9 +55,9 @@ app.get('/add', function (req, res) {
 app.get('*', function (req, res) {
 	var request = req.originalUrl;
 	
-	if(request.length === 6 ){
+	if(request.length === 7 ){
 		res.json(200, request);
-        console.log('short url request');
+        	console.log('short url request');
 	}
 	else{
 		res.status(404);
