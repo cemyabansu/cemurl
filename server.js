@@ -53,12 +53,22 @@ app.get('/add', function (req, res) {
 });
 
 app.get('*', function (req, res) {
-    res.status(404);
-    res.render('pages/error', {
-        title: 'What are you looking for is not here.',
-        description: 'error page',
-        keywords: 'error, 404, lol'
-    });
+	var request = req.originalUrl;
+	
+	if(request.length === 6 ){
+		res.json(200, request);
+        console.log('short url request');
+	}
+	else{
+		res.status(404);
+		res.render('pages/error', {
+			title: 'What are you looking for is not here.',
+			description: 'error page',
+			keywords: 'error, 404, lol'
+		});
+	}
+
+	
 });
 
 var port = process.env.PORT || 8080;
