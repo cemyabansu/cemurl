@@ -4,8 +4,8 @@ var path = require('path');
 var mongoose = require('mongoose');
 
 var Schema = new mongoose.Schema({
-      key       : String, 
-      url       : String
+        key       : String, 
+        url       : String
     });
 
 var Url = mongoose.model('Url', Schema);
@@ -26,12 +26,12 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.render('pages/index', {
-        title: 'willkommen',
+        title: 'The Url Shortener',
         description: 'There is no such thing as perfect',
-        keywords: 'cemyabansu, cem, yabansu, cemyabansu.com'
+        keywords: 'cemyabansu, cem, yabansu, cemyabansu.com, url, shortener, url shortener'
     });
 });
-
+ 
 app.get('/add', function (req, res) {
     var newUrl = req.param('newUrl');
     var newKey = makeKey();
@@ -52,39 +52,32 @@ app.get('/add', function (req, res) {
       });
 });
 
-app.get('*', function (req, res) {
+//will match paths with 6 chars like /ABCXYZ
+app.use(/\/[a-zA-Z0-9]{6}/, function (req, res, next) {
     var request = req.originalUrl.slice(1);
-	
-    if (request.length === 6) {
-        Url.findOne({ key: request }, function (err, returnedUrl) {
+    Url.findOne({ key: request }, function (err, returnedUrl) {
             if(err === null && returnedUrl !== null){
                 console.log("the found url is : " + returnedUrl.url);
                 res.redirect(returnedUrl.url);
             }else{
-                res.status(404);
-                res.render('pages/error', {
-                    title: 'What are you looking for is not here.',
-                    description: 'error page',
-                    keywords: 'error, 404, lol'
-                });
+                //to next controls
+                next();
             }
         });
-	}
-	else{
-		res.status(404);
-		res.render('pages/error', {
-			title: 'What are you looking for is not here.',
-			description: 'error page',
-			keywords: 'error, 404, lol'
-		});
-	}
+})
 
-	
+
+app.get('*', function (req, res) {
+	res.status(404);
+	res.render('pages/error', {
+		title: 'What are you looking for is not here.',
+		description: 'error page',
+		keywords: 'error, 404, lol'
+	});
 });
 
 var port = process.env.PORT || 8080;
 app.listen(port);
-
 
 function makeKey(){
     var key = "";

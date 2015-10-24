@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "the-url-shortener",
+  "version": "0.0.2",
+  "description": "A sample url shortener app which is using Node.js and Express 4",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -11,20 +11,16 @@
     "compression": "^1.5.2",
     "ejs": "^2.3.4",
     "express": "^4.12.3",
-    "mongoose": "^4.0.3",
-    "serve-favicon": "^2.3.0"
+    "mongoose": "^4.0.3"
   },
   "engines": {
     "node": "0.12.7"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
-  },
   "keywords": [
     "node",
     "heroku",
-    "express"
+    "express",
+    "urlshortener"
   ],
   "license": "MIT"
 }
