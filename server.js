@@ -60,7 +60,7 @@ app.use(/\/[a-zA-Z0-9]{6}/, function (req, res, next) {
                 console.log("the found url is : " + returnedUrl.url);
                 res.redirect(returnedUrl.url);
             }else{
-                //to next controls
+                //if key not found, root to next controls
                 next();
             }
         });
