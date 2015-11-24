@@ -9,6 +9,7 @@ exports.AddUrl = function (req,res) {
     if(!validator.isURL(newUrl)){
       res.status(404).json('Url is not valid!');
       console.error('Url is not valid! The url : ' + newUrl);
+      return;
     }
 
     var newKey = makeKey();
