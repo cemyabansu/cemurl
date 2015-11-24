@@ -11,7 +11,8 @@
     "compression": "^1.5.2",
     "ejs": "^2.3.4",
     "express": "^4.12.3",
-    "mongoose": "^4.0.3"
+    "mongoose": "^4.0.3",
+    "validator": "^4.2.0"
   },
   "engines": {
     "node": "0.12.7"
