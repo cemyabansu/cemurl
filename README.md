@@ -1,3 +1,5 @@
-# cemyabansu.com
-Personal website
-This is the project of my website
+# Url Shortener
+Basic url shortener with nodejs and express.
+
+~npm install
+~node server.js
